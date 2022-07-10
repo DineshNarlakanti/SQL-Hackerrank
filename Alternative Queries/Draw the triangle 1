@@ -1,0 +1,11 @@
+
+SET @maxlen := 20;
+WITH RECURSIVE
+cte AS (
+    SELECT @maxlen num
+    UNION ALL
+    SELECT num - 1 FROM cte WHERE num > 1
+)
+SELECT REPEAT('* ', num)
+FROM cte;
+
